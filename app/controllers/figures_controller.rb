@@ -20,19 +20,22 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params[:figure])
     
     params[:titles].each do |title|
-      @figure.titles << Title.find_or_create_by({"name" => title})
+      @figure.titles << Title.find({"name" => title})
     end 
     
     if !params[:title][:name].empty?
-      @figure.titles << Title.create(params[:title][:name])
+      @figure.titles << Title.create(params[:title])
     end 
     
     params[:landmarks].each do |landmark|
-      @figure.landmarks << Landmark.find_or_create_by({"name" => landmark})
+      @figure.landmarks << Landmark.find({"name" => landmark})
     end 
     
     if !params[:landmark][:name].empty? && !params[:landmark][:year_completed].empty?
-      @figure.landmarks << Landmark.create({"name" => params[:landmark][:name]. "year_completed" => params[:landmark][:year_completed]})
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end 
+    
+    @figure.save
     
     redirect to :"figures/#{@figure.id}"
   end 
@@ -46,5 +49,23 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
     
+    params[:titles].each do |title|
+      @figure.titles << Title.find({"name" => title})
+    end 
+    
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end 
+    
+    params[:landmarks].each do |landmark|
+      @figure.landmarks << Landmark.find({"name" => landmark})
+    end 
+    
+    if !params[:landmark][:name].empty? && !params[:landmark][:year_completed].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end 
+    
+    @figure.save
+  end 
     
 end
