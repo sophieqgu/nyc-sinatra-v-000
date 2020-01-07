@@ -1,4 +1,4 @@
-<form action="/figures/<%= @figure.id %>" method = "post">
+<form action="/figures/<%= @figure.id %>" method="post">
   <label for="figure_name">Name</label>
   <input type="text" name="figure[name]" id="figure_name">
   
@@ -16,8 +16,8 @@
   <% end %>
   
   <label for="landmark_name">Create New Landmark:</label>
-  <input type="text" name="landmark[name]" id="landmark_name">
-  <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
+  Name: <input type="text" name="landmark[name]" id="landmark_name">
+  Year: <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
   
   <input type="submit" value="Create New Figure">
 </form>
