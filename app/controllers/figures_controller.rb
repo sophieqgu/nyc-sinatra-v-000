@@ -23,11 +23,15 @@ class FiguresController < ApplicationController
       @figure.titles << Title.find_or_create_by({"name" => title})
     end 
     
-    if !params[:titles]
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title][:name])
+    end 
     
     params[:landmarks].each do |landmark|
       @figure.landmarks << Landmark.find_or_create_by({"name" => landmark})
     end 
+    
+    if !params[]
     
     redirect to :"figures/#{@figure.id}"
   end 
