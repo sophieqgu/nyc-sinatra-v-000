@@ -31,7 +31,8 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.find_or_create_by({"name" => landmark})
     end 
     
-    if !params[]
+    if !params[:landmark][:name].empty? && !params[:landmark][:year_completed].empty?
+      @figure.landmarks << Landmark.create({"name" => params[:landmark][:name]. "year_completed" => params[:landmark][:year_completed]})
     
     redirect to :"figures/#{@figure.id}"
   end 
