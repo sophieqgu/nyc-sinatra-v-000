@@ -19,7 +19,7 @@ class FiguresController < ApplicationController
   post '/figures/:id' do 
     @figure = Figure.create(params[:figure])
     
-    params[:titles].each do |title|
+    params[:figure][:title_ids].each do |title|
       @figure.titles << Title.find({"name" => title})
     end 
     
@@ -27,7 +27,7 @@ class FiguresController < ApplicationController
       @figure.titles << Title.create(params[:title])
     end 
     
-    params[:landmarks].each do |landmark|
+    params[:figure][:landmark_ids].each do |landmark|
       @figure.landmarks << Landmark.find({"name" => landmark})
     end 
     
@@ -49,7 +49,7 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
     
-    params[:titles].each do |title|
+    params[:figure][:title_ids].each do |title|
       @figure.titles << Title.find({"name" => title})
     end 
     
@@ -57,7 +57,7 @@ class FiguresController < ApplicationController
       @figure.titles << Title.create(params[:title])
     end 
     
-    params[:landmarks].each do |landmark|
+    params[:figure][:landmark_ids].each do |landmark|
       @figure.landmarks << Landmark.find({"name" => landmark})
     end 
     
