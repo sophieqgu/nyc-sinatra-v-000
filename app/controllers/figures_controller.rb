@@ -20,7 +20,7 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params[:figure])
     
     params[:figure][:title_ids].each do |title|
-      @figure.titles << Title.find({"name" => title})
+      @figure.titles << Title.find({"id" => title})
     end 
     
     if !params[:title][:name].empty?
@@ -28,7 +28,7 @@ class FiguresController < ApplicationController
     end 
     
     params[:figure][:landmark_ids].each do |landmark|
-      @figure.landmarks << Landmark.find({"name" => landmark})
+      @figure.landmarks << Landmark.find({"id" => landmark})
     end 
     
     if !params[:landmark][:name].empty? && !params[:landmark][:year_completed].empty?
