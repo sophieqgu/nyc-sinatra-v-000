@@ -7,7 +7,7 @@
   
   <label for="titles">Titles</label>
   <% @titles.each do |title| %>
-    <input type="checkbox" name="titles[]" id="<%= title.name %>" value="<%= title.name %>">
+    <input type="checkbox" name="titles[]" id="<%= title.name %>" value="<%= title.name %>" <%= "checked" if @figure.titles.include?(title) %>>
   <% end %>
   
   <label for="title_name">Create New Title:</label>
@@ -15,12 +15,12 @@
   
   <label for="landmarks">Landmarks</label>
   <% @landmarks.each do |landmark| %>
-    <input type="checkbox" name="landmarks[]" id="<%= landmark.name %>" value="<%= landmark.name %>">
+    <input type="checkbox" name="landmarks[]" id="<%= landmark.name %>" value="<%= landmark.name %>" <%= "checked" if @figure.landmarks.include?(landmark %>>
   <% end %>
   
   <label for="landmark_name">Create New Landmark:</label>
   <input type="text" name="landmark[name]" id="landmark_name">
   <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
   
-  <input type="submit" value="Create New Figure">
+  <input type="submit" value="Update Figure">
 </form>
