@@ -16,7 +16,7 @@ class LandmarksController < ApplicationController
   end 
   
   post '/landmarks' do 
-    @landmark = Landmark.find(params[:id])
+    @landmark = Landmark.create(params[:landmark])
     
     if !params[:figure][:name].empty?
       @landmark.figure = Figure.create(params[:figure])
