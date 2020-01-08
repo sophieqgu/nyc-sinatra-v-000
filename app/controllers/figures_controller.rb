@@ -16,7 +16,7 @@ class FiguresController < ApplicationController
     erb :'/figures/show'
   end 
   
-  post '/figures/:id' do 
+  post '/figures' do 
     @figure = Figure.create(params[:figure])
     
     params[:figure][:title_ids].each do |title|
