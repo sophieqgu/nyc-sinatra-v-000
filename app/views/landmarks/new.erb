@@ -11,7 +11,7 @@
   <label>Figure</label>
   <% @figures.each do |figure| %>
     <label><%= figure.name %></label>
-    <input type="checkbox" name="landmark[figure_ids][]" id="<%= figure.id %>" value="<%= figure.id %>">
+    <input type="radio" name="landmark[figure_id]" id="<%= figure.id %>" value="<%= figure.id %>">
   <% end %>
   
   <label>Create New Figure:</label>
