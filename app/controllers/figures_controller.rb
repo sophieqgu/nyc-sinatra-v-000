@@ -17,17 +17,19 @@ class FiguresController < ApplicationController
   end 
   
   post '/figures' do 
-   @figure = Figure.create(params['figure'])
-      unless params[:landmark][:name].empty?
-        @figure.landmarks << Landmark.create(params[:landmark])
-      end
-
-      unless params[:title][:name].empty?
-        @figure.titles << Title.create(params[:title])
-      end
-
-      @figure.save
-      redirect to "/figures/#{@figure.id}"
+    @figure = Figure.create(params[:figure])
+    
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end 
+    
+    if !params[:landmark][:name].empty? && !params[:landmark][:year_completed].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end 
+    
+    @figure.save
+    
+    redirect to :"figures/#{@figure.id}"
   end 
   
   get '/figures/:id/edit' do 
