@@ -1,14 +1,14 @@
 <h2>Edit Historical Landmark</h2>
 
 <!-- add content here -->
-<form action="/figures/<%= @figure.id %>" method = "post">
+<form action="/landmarks/<%= @landmark.id %>" method = "post">
   
   <input type="hidden" id="hidden" name="_method" value="patch">
   
-  <label>Name</label>
-  <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+  <label for="landmark_name">Name</label>
+  <input type="text" name="landmark[name]" id="landmark_name" value="<%= @landmark.name %>">
   
-  <label>Edit Titles</label>
+  <label>Edit Figure</label>
   <% @titles.each do |title| %>
     <label><%= title.name %></label>
     <input type="checkbox" name="figure[title_ids][]" id="<%= title.name %>" value="<%= title.id %>" <%= "checked" if @figure.titles.include?(title) %>>
@@ -16,7 +16,9 @@
   
   <label>Create New Title:</label>
   <input type="text" name="title[name]" id="new_title">
-
+  
+  <input type="submit" value="Edit Figure">
+</form>
 
 <a class="button" href="/landmarks">Landmarks</a>
 <a class="button" href="/">Home</a>
