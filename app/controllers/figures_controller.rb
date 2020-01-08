@@ -20,7 +20,7 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params[:figure])
     
     params[:figure][:title_ids].each do |title|
-      @figure.titles << Title.create_or_find(title)
+      @figure.titles << Title.find_or_create_by({"name" => title})
     end 
     
     if !params[:title][:name].empty?
